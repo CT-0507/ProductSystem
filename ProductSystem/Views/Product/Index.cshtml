@@ -1,0 +1,52 @@
+﻿@model ProductViewModel
+@{
+    Layout = "_Layout";
+
+    ViewData["Title"] = "View All Product";
+}
+
+<table>
+    <thead>
+        <tr>
+            <td>
+                ID
+            </td>
+            <td>
+                Product Name
+            </td>
+            <td>
+                Price
+            </td>
+            <td>
+                Provider ID
+            </td>
+            <td>
+                Description
+            </td>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach(var product in Model.ProductList)
+        {
+            <tr>
+                <td>
+                    <a asp-action="ProductDetail" asp-route-id="@product.Id">@product.Id</a>
+                </td>
+                <td>
+                    @product.Name
+                </td>
+                <td>
+                    @product.Price
+                </td>
+                <td>
+                    @product.ProviderId
+                </td>
+                <td>
+                    @product.Description
+                </td>
+            </tr>
+        }
+    </tbody>
+
+</table>
+<button><a asp-action="AddNewProduct">Add New</a></button>
